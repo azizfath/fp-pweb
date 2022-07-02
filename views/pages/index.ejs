@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+
+        <main>
+            <section>
+                <div id="carousel-promo" class="carousel slide" data-bs-ride="false">
+                    <div class="carousel-indicators" id="promo-indicators">
+                        <button type="button" data-bs-target="#carousel-promo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    </div>
+                    <div class="carousel-inner" id="promo-inner">
+                        <div class="carousel-item active">
+                            <img src="/assets/images/bg_banner.png" class="d-block w-100" alt="">
+                            <div class="carousel-caption py-5">
+                                <div class="row">
+                                    <h1 class="font-weight-bold text-white text-center">Selamat Datang</h1>
+                                    <p class="text-white text-center">Layanan Jaringan Internet Terluas</p>
+                                    <h3 class="font-weight-bold text-white text-responsive">Solusi Internet berkelas, Cerdas, dan Handal untuk aktivitas tanpa batas</h3>
+                                    <p class="fw-light text-white text-responsive">Layanan digital yang menyediakan internet, telepon rumah, dan TV interaktif dengan beragam pilihan paket serta layanan tambahan yang bisa dipilih sesuai kebutuhan Anda. Saat ini, jaringan FiberKu sudah tersebar di seluruh
+                                        wilayah Indonesia dan terus berinovasi untuk memenuhi kebutuhan internet terbaik bagi masyarakat.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="carousel-control-prev carousel-promo-btn" type="button" data-bs-target="#carousel-promo" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                    <button class="carousel-control-next carousel-promo-btn" type="button" data-bs-target="#carousel-promo" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                </div>
+            </section>
+
+            <article>
+                <div class="container">
+                    <div class="row align-items-center py-5">
+                        <div>
+                            <h3 class="mb-4 text-center">
+                                Internet yang cocok Dimanapun
+                            </h3>
+                            <p class="fw-light fs-8 text-center">
+                                Internet merupakan salah satu layanan IndiHome yang menggunakan jaringan fiber optik dan tersebar di seluruh negeri. FiberKu hadir dengan menawarkan pilihan kecepatan Internet unlimited hingga 300 Mbps. Selain cepat, akses internet FiberKu lebih stabil
+                                dan tahan terhadap cuaca. Aktifitas seperti bekerja, belajar, belanja online hingga bermain games di rumah jadilebih praktis dan nyaman.
+                            </p>
+                        </div>
+                        <button type="button" class="btn btn-secondary button-center">Langganan Sekarang</button>
+                    </div>
+                </div>
+            </article>
+
+            <article id="product" class="bg-dark bg-opacity-25">
+                <div class="py-5 container">
+                    <div class="align-items-center">
+                        <div>
+                            <h3 class="mb-4 text-center">
+                                Berbagai jaringan internet sesuai kebutuhan
+                            </h3>
+                            <p class="fw-light fs-8 text-center">
+                                Pilih paket Internet WiFi terbaik untuk kamu.
+                            </p>
+                        </div>
+                    </div>
+                    <div id="carousel-product" class="carousel" data-bs-ride="carousel">
+                        <div class="carousel-inner px-5" id="product-list">
+
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-product" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel-product" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    </div>
+                </div>
+            </article>
+        </main>
+
+
+        <footer>
+            <%- include('../partials/footer') %>
+
+        </footer>
+
+        <script src="/assets/js/index.js"></script>
+</body>
+
+</html>
