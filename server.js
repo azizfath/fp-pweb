@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
-const port = 3001
 var path = require('path')
-var adminRouter = require('./routes/admin_router');
+
+const port = 3001
 
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, '/assets')))
@@ -10,11 +10,18 @@ app.use('/assets', express.static(path.join(__dirname, '/assets')))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+const adminRouter = require('./routes/admin_router');
+const indexViewRouter = require('./routes/index_route')
+const aboutViewRouter = require('./routes/about_route')
+const contactViewRouter = require('./routes/contact_route')
+const productViewRouter = require('./routes/product_route')
+
 app.use('/admin', adminRouter)
+app.use(indexViewRouter)
+app.use(aboutViewRouter)
+app.use(contactViewRouter)
+app.use(productViewRouter)
 
-app.get('/', function(req, res) {
-    res.render('pages/index')
+app.listen(port, () => {
+    console.log(`running at http://localhost:${port}`);
 })
-
-app.listen(port || 3001)
-console.log('server running at ', port)
