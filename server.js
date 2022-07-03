@@ -16,7 +16,7 @@ const aboutViewRouter = require('./routes/about_route')
 const contactViewRouter = require('./routes/contact_route')
 const productViewRouter = require('./routes/product_route')
 
-app.use('/admin', adminRouter)
+app.use(adminRouter)
 app.use(indexViewRouter)
 app.use(aboutViewRouter)
 app.use(contactViewRouter)
