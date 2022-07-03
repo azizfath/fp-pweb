@@ -4,7 +4,10 @@
             <div class="footer-content">
                 <h4>Product</h4>
                 <% product.forEach((element,index)=>{ %>
-                    <a href="#" class="nav-link fw-light fs-6">Up to <%= element.bandwidth%></a>
+                    <a href="#" class="nav-link fw-light fs-6">
+                        <%= element.name %> upto
+                            <%= element.bandwidth%>
+                    </a>
                     <% }) %>
             </div>
             <div class="footer-content">
