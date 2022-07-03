@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+
+        <main>
+            <section class="bg-dark bg-opacity-25 py-5">
+                <div class="container">
+                    <h2 class="text-center">Tim Kami</h2>
+                    <div class="team my-5" id="team">
+
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="container">
+                    <div class="contact my-5">
+                        <div class="contact-sales">
+                            <h2 class="mb-4">Contact Sales</h2>
+                            <p>Bagaimana kami bisa membantu mu ?, ajukan pertanyaan ke kamiKami akan menjawab setelah kamu submit pertanyaan</p>
+                            <table class="mt-5">
+                                <tr>
+                                    <td class="align-item-start pe-3" style="display: flex; padding-top: 5px;"><img src="./assets/icons/location_b.svg" alt="" width="16px"></td>
+                                    <td>
+                                        <p>Jl.Bambu Kuning Selatan no.102, Bekasi, Jawa barat 17114, Indonesia</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-item-start pe-3" style="display: flex; padding-top: 5px;"><img src="./assets/icons/email_b.svg" alt="" width="16px"></td>
+                                    <td>
+                                        <p>fiberku.sales@gmail.com</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="align-item-start pe-3" style="display: flex; padding-top: 5px;"><img src="./assets/icons/phone_b.svg" alt="" width="16px"></td>
+                                    <td>
+                                        <p>+62 08210293676</p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="question">
+                            <h3 class="mb-4">Ajukan Pertanyaan</h3>
+                            <form action="">
+                                <div class="mb-3">
+                                    <label for="question-name" class="form-label">Nama</label>
+                                    <input type="text" class="form-control bg-dark bg-opacity-25" id="question-name" placeholder="Johnny Depp">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="question-email" class="form-label">Email</label>
+                                    <input type="email" class="form-control bg-dark bg-opacity-25" id="question-email" placeholder="nama@email.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="question-question" class="form-label">Pertanyaan</label>
+                                    <textarea class="form-control bg-dark bg-opacity-25" id="question-question" rows="5"></textarea>
+                                </div>
+                                <button type="button" class="btn bg-dark bg-opacity-25 py-2 px-5">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <%- include('../partials/footer') %>
+
+        </footer>
+        <script src="/assets/js/contact.js"></script>
+</body>
+
+</html>

@@ -1,15 +1,22 @@
 const express = require('express')
 const app = express()
-const port = 3001
 var path = require('path')
+const port = 3001
 
 app.set('view engine', 'ejs')
 app.use(express.static(path.join(__dirname, '/assets')))
 app.use('/assets', express.static(path.join(__dirname, '/assets')))
 
-app.get('/', function(req, res) {
-    res.render('pages/index')
-})
+const indexViewRouter = require('./routes/index_route')
+const aboutViewRouter = require('./routes/about_route')
+const contactViewRouter = require('./routes/contact_route')
+const productViewRouter = require('./routes/product_route')
 
-app.listen(port || 3001)
-console.log('server running at ', port)
+app.use(indexViewRouter)
+app.use(aboutViewRouter)
+app.use(contactViewRouter)
+app.use(productViewRouter)
+
+app.listen(port, () => {
+    console.log(`running at http://localhost:${port}`);
+})

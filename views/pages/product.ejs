@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+</head>
+
+<body>
+    <%- include('../partials/header') %>
+
+        <main>
+            <article id="product" class="bg-dark bg-opacity-25 py-5">
+                <div class="container">
+                    <h2 class="text-center mb-4">Berbagai jaringan internet sesuai kebutuhan</h2>
+                    <div id="carousel-product" class="carousel" data-bs-ride="carousel">
+                        <div class="carousel-inner px-5" id="product-detail">
+
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-product" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel-product" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <p class="text-center mt-4">Pilih paket Internet WiFi terbaik untuk kamu. </p>
+                </div>
+            </article>
+        </main>
+
+        <footer>
+            <%- include('../partials/footer') %>
+
+        </footer>
+        <script src="/assets/js/product.js"></script>
+</body>
+
+</html>
