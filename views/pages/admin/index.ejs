@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+    <div class="custom-container col">
+        <div class="sidebar">
+            <div class="side-header">
+                <a href="#">
+                    <img class="mb-4 mt-4 image-side-header" src="/assets/images/banner.png" alt="" srcset="">
+                </a>
+                <hr class="divider">
+                <ul class="list-unstyled btn-toggle-nav fw-normal pb-1 mt-4">
+                    <button class="btn btn-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#pageSetting-collapse" aria-expanded="true">Page Setting</button>
+                    <div class="collapse show" id="pageSetting-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li>
+                                <a class="link-dark" href="">Home View</a>
+                            </li>
+                            <li>
+                                <a class="link-dark" href="">About US</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#data-collapse" aria-expanded="true">Data</button>
+                        <div class="collapse show" id="data-collapse">
+                            <ul class="list-unstyled btn-toggle-nav fw-normal pb-1 small">
+                                <li>
+                                    <a class="link-dark" href="">hello world</a>
+                                </li>
+                                <li>
+                                    <a class="link-dark" href="">hello world</a>
+                                </li>
+                                <li>
+                                    <a class="link-dark" href="">hello world</a>
+                                </li>
+                                <li>
+                                    <a class="link-dark" href="">hello world</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                    <li><hr class="divider"></li>
+
+                    <li class="mt-4 mb-1 p-1">
+                        <button class="btn btn-danger w-100">Log Out</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="main-content col">
+            <div class="header">
+                <nav class="navbar navbar-dark bg-dark">
+                    <div class="container-fluid d-flex flex-row justify-content-between">
+                        <div class="navbar-brand">
+                            <a class="navbar-brand" href="#">Admin Panel</a>
+                        </div>
+                        <div>
+                            <button class="navbar-toggler" type="button" id="toogleNavbar">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+                <div class="editButton m-2">
+                    <h2>Home View Setting</h2>
+                    <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#addModal">Add data</button>
+                </div>
+                <hr class="divider m-3">
+                <div class="container-fluid bg-white m-2">
+                    <div style="width:100%;">
+                        <table class="table">
+                            <caption>List of users</caption>
+                            <thead>
+                              <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">content</th>
+                                <th scope="col">image url</th>
+                                <th scope="col">action</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% data.forEach((element,index)=> { %>
+                               <tr>
+                                <th scope="row"><%=index += 1%></th>
+                                <td><%= element.content%></td>
+                                <td><%= element.image_url%></td>
+                                <td>
+                                    <button class="btn btn-warning m-1" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+                                    <button class="btn btn-danger m-1" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+                                </td>
+                               </tr>
+                              <% }) %>
+                            </tbody>
+                        </table>
+                      </div>
+                    <div>
+                </div>
+            </div>
+            
+            <!-- modal -->
+            <div class="modal fade" id="editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="editModalLabelLabel">Edit Data</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      ...
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="addModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="addModalLabel">Add data</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">Delete data</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure to delete this data?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="/assets/js/admin.js"></script>
+</body> 
+</html>
