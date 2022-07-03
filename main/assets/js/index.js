@@ -22,7 +22,7 @@ promo.forEach((item, index) => {
         "></button>"
 
     document.querySelector("#promo-indicators").innerHTML += promoIndicatorNode
-    document.querySelector("#promo-inner").innerHTML += promoNodeText
+        // document.querySelector("#promo-inner").innerHTML += promoNodeText
 })
 
 let carouselProduct = document.querySelector("#carousel-product")
