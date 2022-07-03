@@ -78,14 +78,15 @@ product.forEach((item, index) => {
 })
 
 let carouselProduct = document.querySelector("#carousel-product")
-let carouselInner = document.querySelectorAll('.carousel-inner')[0]
+let carouselInner = document.querySelectorAll('.carousel-inner-product')[0]
 
 if (window.matchMedia("(min-width: 768px)").matches) {
-    let carouselWidth = document.querySelectorAll(".carousel-inner")[0].scrollWidth
-    let cardWidth = document.querySelectorAll(".carousel-item")[0].clientWidth
+    let carouselWidth = document.querySelectorAll(".carousel-inner-product")[0].scrollWidth
+    let cardWidth = document.querySelectorAll(".product-item")[0].clientWidth
     let scrollPosition = 0
 
-    document.querySelectorAll(".carousel-control-next")[0].addEventListener("click", () => {
+    document.getElementById("next-btn").addEventListener("click", () => {
+        console.log("haha")
         if (scrollPosition < carouselWidth - cardWidth * 4) {
             scrollPosition += cardWidth
             carouselInner.scroll({
@@ -96,7 +97,7 @@ if (window.matchMedia("(min-width: 768px)").matches) {
         }
     })
 
-    document.querySelectorAll(".carousel-control-prev")[0].addEventListener("click", () => {
+    document.getElementById("prev-btn").addEventListener("click", () => {
         if (scrollPosition > 0) {
             scrollPosition -= cardWidth
             carouselInner.scroll({

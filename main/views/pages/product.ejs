@@ -15,17 +15,51 @@
                     <div id="carousel-product" class="carousel" data-bs-ride="carousel">
                         <div class="carousel-inner px-5" id="product-detail">
 
+                            <% data.forEach((element,index)=>{ %>
+                                <div class="<%= index === 0 ? " carousel-item active ": "carousel-item " %>">
+                                    <div class="card">
+                                        <div class="card-body p-5" style="display: flex; flex-direction: column">
+                                            <div class="product-detail">
+                                                <div class="product-detail-left">
+                                                    <p>Up to</p>
+                                                    <p class="fw-bold fs-2">
+                                                        <%= element.bandwidth %>
+                                                    </p>
+                                                    <p>Koneksi dengan
+                                                        <%= element.name %>
+                                                    </p>
+                                                </div>
+                                                <div class="product-detail-right">
+                                                    <b>Tersedia Layanan</b>
+                                                    <div>🌐 Internet</div>
+                                                    <div>📞 Telepon</div>
+                                                    <div class="fs-4 mt-3">Rp
+                                                        <%= element.price %>/bulan</div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <p>
+                                                <%= element.description %>
+                                            </p>
+                                            <button type="button" class="btn btn-secondary py-3 px-5 button-center">Pesan Sekarang</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }) %>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-product" data-bs-slide="prev">
+
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel-product" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carousel-product" data-bs-slide="next">
+                    <button class="carousel-control-next" type="button" data-bs-target="#carousel-product" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="visually-hidden">Next</span>
                         </button>
-                    </div>
-                    <p class="text-center mt-4">Pilih paket Internet WiFi terbaik untuk kamu. </p>
+                </div>
+                <p class="text-center mt-4">Pilih paket Internet WiFi terbaik untuk kamu. </p>
                 </div>
             </article>
         </main>
@@ -34,7 +68,6 @@
             <%- include('../partials/footer') %>
 
         </footer>
-        <script src="/assets/js/product.js"></script>
 </body>
 
 </html>
