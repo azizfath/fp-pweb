@@ -1,6 +1,5 @@
 let promoNodeText = ""
 let promoIndicatorNode = ""
-let productNodeText = ""
 
 let promo = [{
     filename: "promo_1.png"

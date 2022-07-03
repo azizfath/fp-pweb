@@ -39,10 +39,13 @@ html {
 }
 
 .carousel-caption p {
-    font-size: 1.2vw;
+    font-size: 1.5vw;
 }
 
-.carousel-caption h1,
+.carousel-caption h1 {
+    font-size: 4vw;
+}
+
 .carousel-caption h3 {
     font-size: 3vw;
 }
