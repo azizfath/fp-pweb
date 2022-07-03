@@ -1,3 +1,7 @@
+:root {
+    --orange: #f3a81eea;
+}
+
 * {
     font-family: 'Poppins', sans-serif;
 }
@@ -67,7 +71,7 @@ footer a {
 }
 
 .nav-link:hover {
-    color: rgba(235, 167, 42, 0.918);
+    color: var(--orange);
 }
 
 .footer-container-top {
@@ -99,6 +103,10 @@ footer a {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 32px;
+}
+
+.contact-task {
+    color: var(--orange);
 }
 
 @media screen and (max-width: 990px) {
