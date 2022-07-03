@@ -45,11 +45,10 @@
                     <div class="row align-items-center py-5">
                         <div>
                             <h3 class="mb-4 text-center">
-                                Internet yang cocok Dimanapun
+                                <%= judul[0].title %>
                             </h3>
                             <p class="fw-light fs-8 text-center">
-                                Internet merupakan salah satu layanan IndiHome yang menggunakan jaringan fiber optik dan tersebar di seluruh negeri. FiberKu hadir dengan menawarkan pilihan kecepatan Internet unlimited hingga 300 Mbps. Selain cepat, akses internet FiberKu lebih stabil
-                                dan tahan terhadap cuaca. Aktifitas seperti bekerja, belajar, belanja online hingga bermain games di rumah jadilebih praktis dan nyaman.
+                                <%= judul[0].caption %>
                             </p>
                         </div>
                         <button type="button" class="btn btn-secondary button-center">Langganan Sekarang</button>
@@ -72,7 +71,30 @@
                     <div id="carousel-product" class="carousel" data-bs-ride="carousel">
                         <div class="carousel-inner px-5 carousel-inner-product" id="product-list">
 
+                            <% product.forEach((element,index)=>{ %>
+                                <div class="<%= index === 0 ? " carousel-item active ": "carousel-item " %> product-item">
+                                    <div class="card border-0 rounded-4 mx-2">
+                                        <div class="card-body text-center py-4">
+                                            <p>Up to</p>
+                                            <p class="fw-bold fs-2">
+                                                <%= element.bandwidth %> Mbps</p>
+                                            <p>Koneksi dengan
+                                                <%= element.name %>
+                                            </p>
+
+                                            <b>Tersedia Layanan</b>
+                                            <div>🌐 Internet</div>
+                                            <div>📞 Telepon</div>
+                                            <div class="fs-5 mt-3">Rp
+                                                <%= element.price %>/bulan</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }) %>
+
                         </div>
+
+
                         <button class="carousel-control-prev" id="prev-btn" type="button" data-bs-target="#carousel-product" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>

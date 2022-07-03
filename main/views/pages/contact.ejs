@@ -13,7 +13,25 @@
                 <div class="container">
                     <h2 class="text-center">Tim Kami</h2>
                     <div class="team my-5" id="team">
-
+                        <% data.forEach((element,index)=>{ %>
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <div class="fs-5">
+                                        <%= element.task%>
+                                    </div>
+                                    <br>
+                                    <div class="px-3">
+                                        <img src="/assets/images/team/01.jpg" class="rounded-3" width="100%">
+                                    </div>
+                                    <div class="mt-3 fw-bold">
+                                        <%=element.name%>
+                                    </div>
+                                    <div>
+                                        <%=element.nim %>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }) %>
                     </div>
                 </div>
             </section>
@@ -27,19 +45,25 @@
                                 <tr>
                                     <td class="align-item-start pe-3" style="display: flex; padding-top: 5px;"><img src="./assets/icons/location_b.svg" alt="" width="16px"></td>
                                     <td>
-                                        <p>Jl.Bambu Kuning Selatan no.102, Bekasi, Jawa barat 17114, Indonesia</p>
+                                        <p>
+                                            <%= contact[0].address %>
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="align-item-start pe-3" style="display: flex; padding-top: 5px;"><img src="./assets/icons/email_b.svg" alt="" width="16px"></td>
                                     <td>
-                                        <p>fiberku.sales@gmail.com</p>
+                                        <p>
+                                            <%= contact[0].email %>
+                                        </p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="align-item-start pe-3" style="display: flex; padding-top: 5px;"><img src="./assets/icons/phone_b.svg" alt="" width="16px"></td>
                                     <td>
-                                        <p>+62 08210293676</p>
+                                        <p>
+                                            <%= contact[0].telepon %>
+                                        </p>
                                     </td>
                                 </tr>
                             </table>

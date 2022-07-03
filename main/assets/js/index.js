@@ -26,57 +26,6 @@ promo.forEach((item, index) => {
     document.querySelector("#promo-inner").innerHTML += promoNodeText
 })
 
-let product = [{
-    speed: "10",
-    price: "100.000"
-}, {
-    speed: "20",
-    price: "200.000"
-}, {
-    speed: "40",
-    price: "400.000"
-}, {
-    speed: "80",
-    price: "800.000"
-}, {
-    speed: "100",
-    price: "1.000.000"
-}, {
-    speed: "120",
-    price: "1.200.000"
-}, {
-    speed: "150",
-    price: "1.500.000"
-}, {
-    speed: "200",
-    price: "2.000.000"
-}, {
-    speed: "300",
-    price: "3.000.000"
-}]
-
-product.forEach((item, index) => {
-    let active = ""
-    if (index == 0) active = "active"
-
-    productNodeText =
-        "<div class=\"carousel-item " + active + " product-item\">" +
-        "<div class=\"card border-0 rounded-4 mx-2\">" +
-        "<div class=\"card-body text-center py-4\">" +
-        "<p>Up to</p>" +
-        "<p class=\"fw-bold fs-2\">" + item.speed + " Mbps</p>" +
-        "<p>Dual Play</p>" +
-        "<b>Tersedia Layanan</b>" +
-        "<div>🌐 Internet</div>" +
-        "<div>📞 Telepon</div>" +
-        "<div class=\"fs-5 mt-3\">Rp " + item.price + "/bulan</div>" +
-        "</div>" +
-        "</div>" +
-        "</div>"
-
-    document.querySelector("#product-list").innerHTML += productNodeText
-})
-
 let carouselProduct = document.querySelector("#carousel-product")
 let carouselInner = document.querySelectorAll('.carousel-inner-product')[0]
 

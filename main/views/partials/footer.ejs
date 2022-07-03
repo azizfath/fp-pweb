@@ -3,11 +3,9 @@
         <div class="footer-container-top text-white">
             <div class="footer-content">
                 <h4>Product</h4>
-                <a href="#" class="nav-link fw-light fs-6">Up to 10 Mbps</a>
-                <a href="#" class="nav-link fw-light fs-6">Up to 80 Mbps</a>
-                <a href="#" class="nav-link fw-light fs-6">Up to 100 Mbps</a>
-                <a href="#" class="nav-link fw-light fs-6">Up to 200 Mbps</a>
-                <a href="#" class="nav-link fw-light fs-6">Up to 300 Mbps</a>
+                <% product.forEach((element,index)=>{ %>
+                    <a href="#" class="nav-link fw-light fs-6">Up to <%= element.bandwidth%></a>
+                    <% }) %>
             </div>
             <div class="footer-content">
                 <h4>FiberKu</h4>
@@ -18,13 +16,12 @@
             </div>
             <div class="footer-content">
                 <h4>Contact</h4>
-
                 <div class="row align-items-start mt-4">
                     <div class="col-1">
                         <img src="/assets/icons/location.svg" alt="" width="16px">
                     </div>
                     <div class="col-11 fw-light fs-6">
-                        Jl. Wahid Hasyim 122B, Ngropoh, Condongcatur, Depok, Sleman, Yogyakarta
+                        <%= contact[0].address %>
                     </div>
                 </div>
                 <div class="row align-items-start mt-2">
@@ -32,7 +29,7 @@
                         <img src="/assets/icons/email.svg" alt="" width="16px">
                     </div>
                     <div class="col-11 fw-light fs-6">
-                        cs@fiberku.site
+                        <%= contact[0].email %>
                     </div>
                 </div>
                 <div class="row align-items-start mt-2">
@@ -40,7 +37,7 @@
                         <img src="/assets/icons/phone.svg" alt="" width="16px">
                     </div>
                     <div class="col-11 fw-light fs-6">
-                        (+62) 852-2922-2123
+                        <%= contact[0].telepon %>
                     </div>
                 </div>
             </div>
