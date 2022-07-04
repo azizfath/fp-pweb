@@ -12,7 +12,12 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.json());
 
 const authRouter = require('./routes/auth')
+const loginRouter = require('./routes/login-route')
+const dashboardRouter = require('./routes/dashboard-route')
+
 app.use(authRouter)
+app.use(loginRouter)
+app.use(dashboardRouter)
 
 app.listen(port, () => {
     console.log(`running at http://localhost:${port}`)

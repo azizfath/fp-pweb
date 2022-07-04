@@ -4,13 +4,14 @@ const session = require('express-session')
 const passport = require('passport');
 const { isBuffer } = require('util');
 const LocalStrategy = require('passport-local').Strategy
-var flash = require("connect-flash")
-const axios = require('axios')
+var flash = require('connect-flash')
+const axios = require('axios');
+const { authenticate } = require('passport');
 
 app.use(flash());
 
 app.use(session({
-    secret: "p3mr0gw3b",
+    secret: 'p3mr0gw3b',
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 60 * 60 * 1000 } // 1 hour
@@ -19,13 +20,21 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-authUser = (user, password, cb) => {
-    //CEK LEWAT API
+authUser = async(user, password, cb) => {
+    res = await axios.get('https://api.fiberku.site/login')
+    data = res.data
+    let correct = false;
+    let errmsg;
 
-    let authenticated_user = { id: 123, name: "Kyle", pass: "12" }
-        //Let's assume that DB search that user found and password matched for Kyle
-    return cb(null, false, { message: "Incorrect Password" })
-        //return cb(null, authenticated_user)
+    data.forEach((element) => {
+        if (!((user == element.username || user == element.email) && password == element.password)) {
+            return errmsg = 'Invalid Credentials'
+        }
+        correct = { id: element.id_admin, name: element.username, pass: element.password }
+    })
+
+    return await cb(null, correct, { message: errmsg })
+
 }
 
 passport.use(new LocalStrategy(authUser))
@@ -38,28 +47,15 @@ passport.deserializeUser((user, cb) => {
     cb(null, user)
 })
 
-app.post("/login", passport.authenticate('local', {
-    successRedirect: "/dashboard",
-    failureRedirect: "/",
+app.post('/', passport.authenticate('local', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/',
     failureFlash: true
 }))
 
 checkAuth = (req, res, next) => {
     if (req.isAuthenticated()) return next()
-    res.redirect("/")
+    res.redirect('/')
 }
 
-app.get("/dashboard", checkAuth, async function(req, res) {
-    await res.render("dashboard.ejs", { name: req.user.name, pass: req.user.pass })
-})
-
-app.get('/', async function(req, res, next) {
-    await res.render('pages/login', { message: req.flash('error') })
-})
-
-app.post("/logout", (req, res) => {
-    req.logOut()
-    res.redirect("/")
-})
-
-module.exports = app;
+module.exports = app, checkAuth;
