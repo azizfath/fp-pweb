@@ -1,0 +1,40 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+.login {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 86px;
+}
+
+.login-logo,
+.login-form {
+    height: 100vh;
+}
+
+.login-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form button {
+    width: fit-content;
+    margin: auto;
+}
+
+@media screen and (max-width: 767px) {
+    .login {
+        grid-template-columns: 1fr;
+        margin: 64px 0;
+    }
+    .login-logo,
+    .login-form {
+        height: auto;
+        margin: 32px 0;
+    }
+}
