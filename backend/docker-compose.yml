@@ -1,0 +1,14 @@
+version: "3.3"  # optional since v1.27.0
+services:
+  web:
+    image: bt66/fp_pweb_backend:v1.0
+    environment:
+      - REST_API_URL=""
+      - MARAIDB_HOST=
+      - MARIADB_USER=
+      - MARIADB_PASSWORD=
+      - MARIADB_DATABASE=
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend-volume:/usr/src/app/uploads
