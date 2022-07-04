@@ -40,26 +40,26 @@ passport.deserializeUser((user, cb) => {
 
 app.post("/login", passport.authenticate('local', {
     successRedirect: "/dashboard",
-    failureRedirect: "/login",
+    failureRedirect: "/",
     failureFlash: true
 }))
 
 checkAuth = (req, res, next) => {
     if (req.isAuthenticated()) return next()
-    res.redirect("/login")
+    res.redirect("/")
 }
 
 app.get("/dashboard", checkAuth, async function(req, res) {
     await res.render("dashboard.ejs", { name: req.user.name, pass: req.user.pass })
 })
 
-app.get('/login', async function(req, res, next) {
+app.get('/', async function(req, res, next) {
     await res.render('pages/login', { message: req.flash('error') })
 })
 
 app.post("/logout", (req, res) => {
     req.logOut()
-    res.redirect("/login")
+    res.redirect("/")
 })
 
 module.exports = app;
