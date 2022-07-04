@@ -29,12 +29,11 @@
                             </div>
                         </div>
 
-                        <div class="carousel-item">
-                            <img src="/assets/images/promo/1.png" class="d-block w-100" alt="">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/assets/images/promo/2.png" class="d-block w-100" alt="">
-                        </div>
+                        <% promotion.forEach((element)=>{ %>
+                            <div class="carousel-item">
+                                <img src="<%= element.path %>" alt="" class="d-block w-100">
+                            </div>
+                            <%})  %>
                     </div>
 
 
