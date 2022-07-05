@@ -15,13 +15,11 @@ const indexViewRouter = require('./routes/index_route')
 const aboutViewRouter = require('./routes/about_route')
 const contactViewRouter = require('./routes/contact_route')
 const productViewRouter = require('./routes/product_route')
-const loginViewRouter = require('./routes/login_route')
 
 app.use(indexViewRouter)
 app.use(aboutViewRouter)
 app.use(contactViewRouter)
 app.use(productViewRouter)
-app.use(loginViewRouter)
 
 app.listen(port, () => {
     console.log(`running at http://localhost:${port}`)
