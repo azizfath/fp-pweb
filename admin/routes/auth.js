@@ -48,7 +48,7 @@ passport.deserializeUser((user, cb) => {
 })
 
 app.post('/', passport.authenticate('local', {
-    successRedirect: '/dashboard',
+    successRedirect: '/admin/homeView',
     failureRedirect: '/',
     failureFlash: true
 }))
