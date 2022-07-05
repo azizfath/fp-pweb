@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+    <div class="custom-container col">
+        <div class="sidebar">
+            <div class="side-header">
+                <a href="#">
+                    <img class="mb-4 mt-4 image-side-header" src="/assets/images/banner.png" alt="" srcset="">
+                </a>
+                <hr class="divider">
+                <ul class="list-unstyled btn-toggle-nav fw-normal pb-1 mt-4">
+                    <button class="btn btn-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#pageSetting-collapse" aria-expanded="true">Page Setting</button>
+                    <div class="collapse show" id="pageSetting-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li>
+                                <a class="link-dark" href="/admin/homeView">Home View</a>
+                            </li>
+                            <li>
+                                <a class="link-dark" href="/admin/AboutMeView">About US</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <li class="mb-1">
+                        <button class="btn btn-toggle collapsed" data-bs-toggle="collapse" data-bs-target="#data-collapse" aria-expanded="true">Data</button>
+                        <div class="collapse show" id="data-collapse">
+                            <ul class="list-unstyled btn-toggle-nav fw-normal pb-1 small">
+                                <li>
+                                    <a class="link-dark" href="/admin/contact">Contact</a>
+                                </li>
+                                <li>
+                                    <a class="link-dark" href="/admin/product">Product</a>
+                                </li>
+                                <li>
+                                    <a class="link-dark" href="/admin/promotion">Promotion</a>
+                                </li>
+                                <li>
+                                    <a class="link-dark" href="/admin/team">Team</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><hr class="divider"></li>
+                    <li class="mt-4 mb-1 p-1">
+                        <form  action="/logout" method="post">
+                            <input class="btn btn-danger w-100" type="submit" value="Logout">
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- product -->
+        <div class="main-content col">
+            <div class="header">
+                <nav class="navbar navbar-dark bg-dark">
+                    <div class="container-fluid d-flex flex-row justify-content-between">
+                        <div class="navbar-brand">
+                            <a class="navbar-brand" href="#">Admin Panel</a>
+                        </div>
+                        <div>
+                            <button class="navbar-toggler" type="button" id="toogleNavbar">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+                <div class="editButton m-2">
+                    <h2>Product</h2>
+                    <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#addModal">Add data</button>
+                </div>
+                <hr class="divider m-3">
+                <div class="container-fluid bg-white m-2">
+                    <div style="width:100%;">
+                        <table class="table">
+                            <caption>List of users</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">bandwidth</th>
+                                    <th scope="col">Media Transmission</th>
+                                    <th scope="col">price</th>
+                                    <th scope="col">description</th>
+                                    <th scope="col">action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <% data.forEach((element,index)=> { %>
+                                <tr>
+                                    <th scope="row"><%=index += 1%></th>
+                                    <td><%= element.bandwidth%></td>
+                                    <td><%= element.name%></td>
+                                    <td><%= element.price%></td>
+                                    <td><%= element.description%></td>
+                                    <td>
+                                    <div class="d-flex">
+                                        <button class="btn btn-warning m-1 btnUpdate" data-bs-toggle="modal" data-bs-target="#update<%= element.id_product %>id">Edit</button>
+                                        <button class="btn btn-danger m-1 btnDelete" data-bs-toggle="modal" data-bs-target="#delete<%= element.id_product %>id">Delete</button>
+                                    </div>
+                                    </td>
+                                    <div class="modal fade" id="delete<%= element.id_product %>id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel">Delete Data</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p class="fw-bold ">Are you sure to delete :</p>
+                                                <p class="mt-2">bandwidth :</p>  
+                                                <p><%= element.bandwidth%></p>
+                                                <p class="mt-1">Media Transmission :</p>  
+                                                <p><%= element.name%></p>
+                                                <p class="mt-1">price :</p>
+                                                <p><%= element.bandwidth%></p>
+                                                <p class="mt-1">Description :</p>  
+                                                <p><%= element.description%></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <a href="/admin/delete/products/<%= element.id_product %>" class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                    <div class="modal fade" id="update<%= element.id_product %>id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editModelLabelLabel"><% element.id_mediaTransmission %> Edit Data</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="/admin/update/products/<%= element.id_product %>" method="post">
+                                                    <div class="mb-3">
+                                                        <label for="bandwidth" class="col-form-label">bandwidth: </label>
+                                                        <input id="bandwidth" class="form-control" type="text" name="bandwidth" value="<%= element.bandwidth %>">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="mediaTransmission" class="col-form-label">Media Transmission</label>
+                                                        <select id="mediaTransmission" class="form-select" name="id_mediaTransmission">
+                                                            <% dataMediaTransmission.forEach((element,index)=> { %>
+                                                                <% if(element.id_mediaTransmission == dataMediaTransmission.id_mediaTransmission){ %>
+                                                                    <option selected value="<%= element.id_mediaTransmission %>"><%= element.name %></option>
+                                                                <% } else{ %>  
+                                                                    <option  value="<%= element.id_mediaTransmission %>"><%= element.name %></option>
+                                                                <% } %>
+                                                            <% }) %>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="price" class="col-form-label">price: </label>
+                                                        <input id="price" class="form-control" type="text" name="price" value="<%= element.price %>">
+                                                    </div>
+                        
+                                                    <div class="mb-3">
+                                                        <label for="description" class="col-form-label">description: </label>
+                                                        <input id="description" class="form-control" type="text" name="description" value="<%= element.description %>" >
+                                                    </div>
+                                                    
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <input type="submit" class="btn btn-primary" value="OK">
+                                                        </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tr>
+                            <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- media transmission -->
+                <div class="editButton m-2">
+                    <h2>Media Transmission</h2>
+                    <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#addMediaTransmission">Add data</button>
+                </div>
+
+                <div class="container-fluid bg-white m-2">
+                    <div class="mt-4" style="width:100%;">
+                        <table class="table">
+                            <caption>List Of Media Transmission</caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Distance</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <% dataMediaTransmission.forEach((element,index)=> { %>
+                                <tr>
+                                    <th scope="row"><%=index += 1%></th>
+                                    <td><%= element.name %></td>
+                                    <td><%= element.distance %></td>
+                                    <td><%= element.id_mediaTransmission %></td>
+                                    <td>
+                                    <div class="d-flex">
+                                        <button class="btn btn-warning m-1" data-bs-toggle="modal" data-bs-target="#updateMt<%= element.id_mediaTransmission %>id">Edit</button>
+                                        <button class="btn btn-danger m-1" data-bs-toggle="modal" data-bs-target="#deleteMt<%= element.id_mediaTransmission %>id">Delete</button>
+                                    </div>
+                                    </td>
+
+                                    <div class="modal fade" id="updateMt<%= element.id_mediaTransmission %>id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editModelLabelLabel">Edit Data</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="/admin/update/mediaTransmission/<%= element.id_mediaTransmission %>" method="post">
+                                                        <div class="mb-3">
+                                                            <label for="name" class="col-form-label">Name : </label>
+                                                            <input id="name" class="form-control" type="text" name="name" value="<%= element.name %>">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="distance" class="col-form-label">Distance: </label>
+                                                            <input id="distance" class="form-control" type="text" name="distance" value="<%= element.distance %>">
+                                                        </div>
+                                                        
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <input type="submit" class="btn btn-primary" value="OK">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </tr>
+                            <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- modal -->
+        <div class="modal fade" id="addModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabelLabel">Add data</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/admin/add/products/" method="post">
+                            <div class="mb-3">
+                                <label for="bandwidth" class="col-form-label">bandwidth: </label>
+                                <input id="bandwidth" class="form-control" type="text" name="bandwidth" value="">
+                            </div>
+                            <div class="mb-3">
+                                <label for="mediaTransmission" class="col-form-label">Media Transmission</label>
+                                <select id="mediaTransmission" class="form-select" name="id_mediaTransmission">
+                                    <% dataMediaTransmission.forEach((element,index)=> { %>
+                                        <option value="<%= element.id_mediaTransmission %>"><%= element.name %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="col-form-label">price: </label>
+                                <input id="price" class="form-control" type="text" name="price" value="">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label">description: </label>
+                                <input id="description" class="form-control" type="text" name="description" value="">
+                            </div>
+                            
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" value="OK">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- moodal add data Media -->
+        <div class="modal fade" id="addMediaTransmission" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addMediaTransmissionLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addMediaTransmissionLabelLabel">Add data</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/admin/add/mediaTransmission/" method="post">
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">name: </label>
+                                <input id="name" class="form-control" type="text" name="name" value="">
+                            </div>
+                            <div class="mb-3">
+                                <label for="distance" class="col-form-label">distance: </label>
+                                <input id="distance" class="form-control" type="text" name="distance" value="">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" value="OK">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- <div class="modal fade" id="addModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addModalLabel">Add data</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    <!-- </div> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="/assets/js/admin.js"></script>
+</body> 
+
+</html>
