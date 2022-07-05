@@ -52,7 +52,9 @@
                     <li><hr class="divider"></li>
 
                     <li class="mt-4 mb-1 p-1">
-                        <button class="btn btn-danger w-100">Log Out</button>
+                        <form  action="/logout" method="post">
+                            <input class="btn btn-danger w-100" type="submit" value="Logout">
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -115,7 +117,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <a href="/admin/delete/team/<%= element.id_content %>" class="btn btn-danger">Delete</a>
+                                                    <a href="/admin/delete/promotion/<%= element.id_content %>" class="btn btn-danger">Delete</a>
                                                 </div>
                                             </div>
                                         </div>

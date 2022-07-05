@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.bodyParser());
 app.use(authRouter)
 app.use('/admin', adminRouter)
-app.use('/login', loginRouter)
+app.use('/', loginRouter)
 
 app.get('/', function(req, res) {
     res.render('pages/index')

@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
 
 var upload = multer({ storage: storage })
 // about us setting
-router.get('/AboutMeView',(req, res, next) => {
+router.get('/AboutMeView', checkAuth,(req, res, next) => {
     axios.get('https://api.fiberku.site/aboutMeView').then((result) => {
         res.render('pages/admin/aboutMe', {
             data: result.data
@@ -30,7 +30,7 @@ router.get('/AboutMeView',(req, res, next) => {
     // });
 })
 
-router.get('/delete/AboutMeView/:id', (req, res, next) => {
+router.get('/delete/AboutMeView/:id', checkAuth, (req, res, next) => {
         // console.log(req.params.id)
     axios.delete(`https://api.fiberku.site/aboutMeView/${req.params.id}`).then((result) => {
         console.log(result);
@@ -41,7 +41,7 @@ router.get('/delete/AboutMeView/:id', (req, res, next) => {
     });
 })
 
-router.post('/add/AboutMeView/', (req, res, next) => {
+router.post('/add/AboutMeView/', checkAuth, (req, res, next) => {
     console.log(req.body)
     axios.post(`https://api.fiberku.site/aboutMeView`, req.body).then((result) => {
         console.log(result);
@@ -52,7 +52,7 @@ router.post('/add/AboutMeView/', (req, res, next) => {
     });
 })
 
-router.post('/update/AboutMeView/', (req, res, next) => {
+router.post('/update/AboutMeView/', checkAuth, (req, res, next) => {
     console.log(req.body)
     axios.put(`https://api.fiberku.site/aboutMeView`, req.body).then((result) => {
         console.log(result);
@@ -65,7 +65,7 @@ router.post('/update/AboutMeView/', (req, res, next) => {
 
 // home view setting
 
-router.get('/homeView',(req, res, next) => {
+router.get('/homeView', checkAuth,(req, res, next) => {
     axios.get('https://api.fiberku.site/homeView').then((result) => {
         console.log(result.data)
         res.render('pages/admin/homeView', {
@@ -77,7 +77,7 @@ router.get('/homeView',(req, res, next) => {
     });
 })
 
-router.get('/delete/homeView/:id', (req, res, next) => {
+router.get('/delete/homeView/:id', checkAuth, checkAuth, (req, res, next) => {
     // console.log(req.params.id)
     axios.delete(`https://api.fiberku.site/homeView/${req.params.id}`).then((result) => {
         console.log(result);
@@ -88,7 +88,7 @@ router.get('/delete/homeView/:id', (req, res, next) => {
     });
 })
 
-router.post('/add/homeView/', (req, res, next) => {
+router.post('/add/homeView/', checkAuth, (req, res, next) => {
 console.log(req.body)
 axios.post(`https://api.fiberku.site/homeView`, req.body).then((result) => {
     console.log(result);
@@ -99,7 +99,7 @@ axios.post(`https://api.fiberku.site/homeView`, req.body).then((result) => {
 });
 })
 
-router.post('/update/homeView/:id', (req, res, next) => {
+router.post('/update/homeView/:id', checkAuth, (req, res, next) => {
 console.log(req.body)
 axios.put(`https://api.fiberku.site/homeView/${req.params.id}`, req.body).then((result) => {
     console.log(result);
@@ -112,7 +112,7 @@ axios.put(`https://api.fiberku.site/homeView/${req.params.id}`, req.body).then((
 
 // contact setting
 
-router.get('/contact',(req, res, next) => {
+router.get('/contact', checkAuth,(req, res, next) => {
     axios.get('https://api.fiberku.site/contact').then((result) => {
         
         res.render('pages/admin/contact', {
@@ -124,7 +124,7 @@ router.get('/contact',(req, res, next) => {
     });
 })
 
-router.get('/delete/contact/:id', (req, res, next) => {
+router.get('/delete/contact/:id', checkAuth, (req, res, next) => {
     // console.log(req.params.id)
     axios.delete(`https://api.fiberku.site/contact/${req.params.id}`).then((result) => {
         console.log(result);
@@ -135,7 +135,7 @@ router.get('/delete/contact/:id', (req, res, next) => {
     });
 })
 
-router.post('/add/contact/', (req, res, next) => {
+router.post('/add/contact/', checkAuth, (req, res, next) => {
 console.log(req.body)
 axios.post(`https://api.fiberku.site/contact`, req.body).then((result) => {
     console.log(result);
@@ -146,7 +146,7 @@ axios.post(`https://api.fiberku.site/contact`, req.body).then((result) => {
 });
 })
 
-router.post('/update/contact/:id', (req, res, next) => {
+router.post('/update/contact/:id', checkAuth, (req, res, next) => {
 console.log(req.body)
 axios.put(`https://api.fiberku.site/contact/${req.params.id}`, req.body).then((result) => {
     console.log(result);
@@ -159,7 +159,7 @@ axios.put(`https://api.fiberku.site/contact/${req.params.id}`, req.body).then((r
 
 
 //  product setting
-router.get('/product',async(req, res, next) => {
+router.get('/product', checkAuth,async(req, res, next) => {
     try {
         mediaTransmission = await axios.get('https://api.fiberku.site/mediaTransmission')
         product = await axios.get('https://api.fiberku.site/products')
@@ -172,7 +172,7 @@ router.get('/product',async(req, res, next) => {
     }
 })
 
-router.get('/delete/products/:id', (req, res, next) => {
+router.get('/delete/products/:id', checkAuth, (req, res, next) => {
     // console.log(req.params.id)
     axios.delete(`https://api.fiberku.site/products/${req.params.id}`).then((result) => {
         console.log(result);
@@ -183,7 +183,7 @@ router.get('/delete/products/:id', (req, res, next) => {
     });
 })
 
-router.post('/add/products/', (req, res, next) => {
+router.post('/add/products/', checkAuth, (req, res, next) => {
 console.log(req.body)
 axios.post(`https://api.fiberku.site/products`, req.body).then((result) => {
     console.log(result);
@@ -194,7 +194,7 @@ axios.post(`https://api.fiberku.site/products`, req.body).then((result) => {
 });
 })
 
-router.post('/update/products/:id', (req, res, next) => {
+router.post('/update/products/:id', checkAuth, (req, res, next) => {
 console.log(req.body)
 axios.put(`https://api.fiberku.site/products/${req.params.id}`, req.body).then((result) => {
     console.log(result);
@@ -206,7 +206,7 @@ axios.put(`https://api.fiberku.site/products/${req.params.id}`, req.body).then((
 })
 
 // media transmission
-router.get('mediaTransmission',(req, res, next) => {
+router.get('mediaTransmission', checkAuth,(req, res, next) => {
     result =  axios.get('https://api.fiberku.site/promotion').then((result) => {
         res.render('pages/admin/promotion', {
             data: result.data
@@ -216,7 +216,7 @@ router.get('mediaTransmission',(req, res, next) => {
     });
 })
 
-router.get('/delete/mediaTransmission/:id', (req, res, next) => {
+router.get('/delete/mediaTransmission/:id', checkAuth, (req, res, next) => {
     // console.log(req.params.id)
     axios.delete(`https://api.fiberku.site/mediaTransmission/${req.params.id}`).then((result) => {
         console.log(result);
@@ -227,7 +227,7 @@ router.get('/delete/mediaTransmission/:id', (req, res, next) => {
     });
 })
 
-router.post('/add/mediaTransmission/', (req, res, next) => {
+router.post('/add/mediaTransmission/', checkAuth, (req, res, next) => {
 console.log(req.body)
     axios.post(`https://api.fiberku.site/mediaTransmission`, req.body).then((result) => {
         console.log(result);
@@ -238,7 +238,7 @@ console.log(req.body)
     });
 })
 
-router.post('/update/mediaTransmission/:id', (req, res, next) => {
+router.post('/update/mediaTransmission/:id', checkAuth, (req, res, next) => {
 console.log(req.body)
 axios.put(`https://api.fiberku.site/mediaTransmission/${req.params.id}`, req.body).then((result) => {
     console.log(result);
@@ -252,7 +252,7 @@ axios.put(`https://api.fiberku.site/mediaTransmission/${req.params.id}`, req.bod
 
 // team setting
 
-router.get('/team', async(req, res, next) => {
+router.get('/team', checkAuth, async(req, res, next) => {
     try {
         team = await axios.get('https://api.fiberku.site/team')
         task = await axios.get('https://api.fiberku.site/task')
@@ -265,7 +265,7 @@ router.get('/team', async(req, res, next) => {
     }
 })
 
-router.get('/delete/team/:id', (req, res, next) => {
+router.get('/delete/team/:id', checkAuth, (req, res, next) => {
     axios.delete(`https://api.fiberku.site/team/${req.params.id}`).then((result) => {
         console.log(result);
         res.redirect('/admin/team');
@@ -275,7 +275,7 @@ router.get('/delete/team/:id', (req, res, next) => {
     });
 })
 
-router.post('/add/team/', upload.single('image'), (req, res, next) => {
+router.post('/add/team/', checkAuth, upload.single('image'), (req, res, next) => {
     if ((req.file && req.body.imgurl) == undefined || ''){
         req.body['image_url']=`${process.env.WEBSITE_URL}/assets/images/no-image.png`;
     }
@@ -294,7 +294,7 @@ router.post('/add/team/', upload.single('image'), (req, res, next) => {
     });
 })
 
-router.post('/update/team/:id', upload.single('image'), (req, res, next) => {
+router.post('/update/team/:id', checkAuth, upload.single('image'), (req, res, next) => {
     if ((req.file && req.body.imgurl) == undefined || ''){
         req.body['image_url']=`${process.env.WEBSITE_URL}/assets/images/no-image.png`;
     }
@@ -313,7 +313,7 @@ router.post('/update/team/:id', upload.single('image'), (req, res, next) => {
     });
 })
 
-router.get('/delete/task/:id', (req, res, next) => {
+router.get('/delete/task/:id', checkAuth, (req, res, next) => {
     axios.delete(`https://api.fiberku.site/task/${req.params.id}`).then((result) => {
         console.log(result);
         res.redirect('/admin/team');
@@ -323,7 +323,7 @@ router.get('/delete/task/:id', (req, res, next) => {
     });
 })
 
-router.post('/add/task/', (req, res, next) => {
+router.post('/add/task/', checkAuth, (req, res, next) => {
     console.log(req.body)
     axios.post(`https://api.fiberku.site/task`, req.body).then((result) => {
         console.log(result);
@@ -334,7 +334,7 @@ router.post('/add/task/', (req, res, next) => {
     });
 })
 
-router.post('/update/task/:id', (req, res, next) => {
+router.post('/update/task/:id', checkAuth, (req, res, next) => {
 console.log(req.body)
 axios.put(`https://api.fiberku.site/task/${req.params.id}`, req.body).then((result) => {
     console.log(result);
@@ -347,7 +347,7 @@ axios.put(`https://api.fiberku.site/task/${req.params.id}`, req.body).then((resu
 
 // promotion
 
-router.get('/promotion',(req, res, next) => {
+router.get('/promotion', checkAuth,(req, res, next) => {
     axios.get('https://api.fiberku.site/promotion').then((result) => {
         res.render('pages/admin/promotion', {
             datPromotion: result.data
@@ -357,7 +357,7 @@ router.get('/promotion',(req, res, next) => {
     });
 })
 
-router.post('/add/promotion/',upload.single('image'), (req, res, next) => {
+router.post('/add/promotion/', checkAuth, upload.single('image'), (req, res, next) => {
     if ((req.file && req.body.imageurl) == undefined || ''){
         req.body['path']=`${process.env.WEBSITE_URL}/assets/images/no-image.png`;
     }
@@ -376,7 +376,7 @@ router.post('/add/promotion/',upload.single('image'), (req, res, next) => {
     });
 })
 
-router.post('/update/promotion/:id', upload.single('image'), (req, res, next) => {
+router.post('/update/promotion/:id', checkAuth, upload.single('image'), (req, res, next) => {
 console.log(req.body)
 if ((req.file && req.body.imageurl) == undefined || ''){
     req.body['path']=`${process.env.WEBSITE_URL}/assets/images/no-image.png`;
@@ -397,9 +397,9 @@ axios.put(`https://api.fiberku.site/promotion/${req.params.id}`, req.body).then(
     });
 })
 
-router.get('/delete/promotion/:id', (req, res, next) => {
-    axios.delete(`https://api.fiberku.site/task/${req.params.id}`).then((result) => {
-        console.log(result);
+router.get('/delete/promotion/:id', checkAuth, (req, res, next) => {
+    axios.delete(`https://api.fiberku.site/promotion/${req.params.id}`).then((result) => {
+        // console.log(result);
         res.redirect('/admin/promotion');
     }).catch((err) => {
         console.log(err)
