@@ -25,7 +25,7 @@ git pull azizfath/fiberku_admin
 git pull azizfath/fiberku_backend
 ```
 
-> **Sebelum memulai docker, isi / perbaiki environment pada backend / rest API**
+> **Sebelum memulai docker, isi / perbaiki environment pada _docker-compose.yml_ backend / rest API**
 
 
 Start Docker menggunakan Docker Compose atau Run docker secara manual dengan command
