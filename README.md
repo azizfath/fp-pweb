@@ -1,10 +1,8 @@
-# FiberKu.site
+# [FiberKu.site](https://FiberKu.site)
 
-Repository ini adalah dokumentasi dari sebuah project Final Project Matakuliah Pemrograman WEB
+### Repository ini adalah dokumentasi dari sebuah project Final Project Matakuliah Pemrograman WEB
 
 Dibuat oleh Kelompok 2 dari 20-S1IF-07
-
-## Kunjungi WEB ini di https://fiberku.site
 
 -----------------------------
 
@@ -12,22 +10,23 @@ Dibuat oleh Kelompok 2 dari 20-S1IF-07
 
 Pull / Import docker terlebih dahulu :
 
-Site Utama
+- _Site Utama_
 ```
 git pull azizfath/fiberku
 ```
 
-Site Admin
+- _Site Admin_
 ```
 git pull azizfath/fiberku_admin
 ```
 
-RestAPI Backend
+- _RestAPI Backend_
 ```
 git pull azizfath/fiberku_backend
 ```
 
-Sebelum memulai docker, isi / perbaiki environment pada backend / rest API
+> **Sebelum memulai docker, isi / perbaiki environment pada backend / rest API**
+
 
 Start Docker menggunakan Docker Compose atau Run docker secara manual dengan command
 ```
