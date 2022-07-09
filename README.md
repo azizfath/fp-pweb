@@ -5,6 +5,13 @@
 Dibuat oleh Kelompok 2 dari 20-S1IF-07
 
 -----------------------------
+## Quick Start Guide Run AIO on Single Node:
+- _Make sure you have docker and docker-compose_
+- _Run app_
+```
+docker-compose up -d
+```
+
 
 ## Cara deploy :
 
@@ -34,3 +41,4 @@ docker run -d -p3000:3000 azizfath/fiberku_backend
 docker run -d -p3001:3001 azizfath/fiberku
 docker run -d -p3002:3002 azizfath/fiberku_admin
 ```
+
