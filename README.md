@@ -5,7 +5,7 @@
 Dibuat oleh Kelompok 2 dari 20-S1IF-07
 
 -----------------------------
-## Quick Start Guide Run AIO on Single Node:
+## Quick Start Guide Run AIO on single node server:
 - _Make sure you have docker and docker-compose_
 - _Run app_
 ```
@@ -13,7 +13,7 @@ docker-compose up -d
 ```
 
 
-## Cara deploy :
+## Manual Deployment :
 
 Pull / Import docker terlebih dahulu :
 
