@@ -1,0 +1,45 @@
+version: "3.3"
+services:
+  backend_REST_API:
+    image: azizfath/fiberku_backend
+    environment:
+      - REST_API_URL="https://api.fiberku.site"
+      - MARAIDB_HOST=mariadb
+      - MARIADB_USER=root
+      - MARIADB_PASSWORD=P3mrogW3B
+      - MARIADB_DATABASE=FP_WEB
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./volumes/backend-volume:/usr/src/app/uploads
+    depends_on:
+      - mariadb
+    restart: always
+
+  adminPage:
+    image: azizfath/fiberku_admin
+    environment:
+      - WEBSITE_URL=https://admin.fiberku.site
+    ports:
+      - "3002:3002"
+    volumes:
+      - ./adminPage/volumes/assets:/usr/src/app/assets/uploads
+    restart: always
+
+  mainPage:
+    image: azizfath/fiberku
+    ports:
+      - "3001:3001"
+  mariadb:
+    image: mariadb:10.7
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=P3mrogW3B
+      - MYSQL_PASSWORD=P3mrogW3B
+      - MYSQL_USER=fpweb
+      - MYSQL_DATABASE=FP_WEB
+    volumes:
+      - ./volumes/mariadb-volume:/var/lib/mysql
+      - ./database/FP_WEB.sql:/docker-entrypoint-initdb.d/dump.sql
+    restart: always

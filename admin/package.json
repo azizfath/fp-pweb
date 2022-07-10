@@ -2,7 +2,11 @@
   "name": "fiberku",
   "version": "1.0.0",
   "description": "final project pweb",
+<<<<<<< HEAD
+  "main": "server.js",
+=======
   "main": "index.js",
+>>>>>>> 2da94c6f7d0ddbc91e63ea20c571d76425118d61
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
